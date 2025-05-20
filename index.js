@@ -9,7 +9,7 @@ const productRoutes = require('./routes/productRoutes');
 const path = require('path');
 
 //port, dotenv, body-parser
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 dotEnv.config();
 app.use(bodyParser.json());
 
@@ -23,7 +23,7 @@ app.use('/firm', firmRouters);
 app.use('/product', productRoutes);
 app.use('/uploads', express.static('uploads'));
 
-app.use('/home', (req, res) => {
+app.use('/', (req, res) => {
     res.send('home page')
 })
 app.listen(PORT, () => {
