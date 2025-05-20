@@ -25,7 +25,7 @@ app.use('/firm', firmRouters);
 app.use('/product', productRoutes);
 app.use('/uploads', express.static('uploads'));
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.render('home')
 })
 app.listen(PORT, () => {
