@@ -8,10 +8,12 @@ const bodyParser = require('body-parser');
 const productRoutes = require('./routes/productRoutes');
 const path = require('path');
 
-//port, dotenv, body-parser
+
+//port, dotenv, body-parser, pug
 const PORT = process.env.PORT || 3000;
 dotEnv.config();
 app.use(bodyParser.json());
+app.set('view engine', 'pug');
 
 //connecting mongoose
 mongoose.connect(process.env.MONGO_URL)
@@ -24,7 +26,7 @@ app.use('/product', productRoutes);
 app.use('/uploads', express.static('uploads'));
 
 app.use('/', (req, res) => {
-    res.send('<h1>Hello...</h1>')
+    res.render('home')
 })
 app.listen(PORT, () => {
     console.log(`server started and running at ${PORT}`)
