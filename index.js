@@ -24,7 +24,7 @@ app.use('/product', productRoutes);
 app.use('/uploads', express.static('uploads'));
 
 app.use('/', (req, res) => {
-    res.send('home page')
+    res.send('<h1>Hello...</h1>')
 })
 app.listen(PORT, () => {
     console.log(`server started and running at ${PORT}`)
