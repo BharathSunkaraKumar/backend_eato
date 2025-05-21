@@ -7,6 +7,7 @@ const firmRouters = require('./routes/firmRoutes');
 const bodyParser = require('body-parser');
 const productRoutes = require('./routes/productRoutes');
 const path = require('path');
+const cors = require('cors')
 
 
 //port, dotenv, body-parser, pug
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 3000;
 dotEnv.config();
 app.use(bodyParser.json());
 app.set('view engine', 'pug');
+app.use(cors())
+// app.use(express.json())
 
 //connecting mongoose
 mongoose.connect(process.env.MONGO_URL)
