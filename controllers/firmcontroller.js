@@ -21,7 +21,9 @@ const addFirm = async(req, res) => {
         const image = req.file ? req.file.filename : undefined;
 
         const vendor = await Vendor.findById(req.vendorId);
-
+        if(vendor.firm.length > 0) {
+            return res.status(400).json({message: 'vendor can have only one firm'})
+        }
         if(!vendor) {
             res.status(404).json({message: "vendor not found"});
         }
@@ -30,10 +32,11 @@ const addFirm = async(req, res) => {
         })
 
         const saveFirm = await firm.save();
+        const firmId = saveFirm._id
         vendor.firm.push(saveFirm)
         await vendor.save()
 
-        return res.status(200).json({message: 'Firm added successfully'});
+        return res.status(200).json({message: 'Firm added successfully', firmId});
     }catch(err) {
         console.log(err);
         res.status(500).json({err: 'firm not add'});
