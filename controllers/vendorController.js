@@ -43,7 +43,8 @@ const vendorLogin = async(req, res) => {
         //token
         const token = jwt.sign({vendorId: vendor._id}, secretKey, {expiresIn: "1h"})
         console.log(token)
-        res.status(200).json({success: 'Login successful', token});
+        const vendorId = vendor._id
+        res.status(200).json({success: 'Login successful', token, vendorId});
         console.log(email);
     }catch(err) {
         if(err) {
@@ -72,7 +73,7 @@ const getVendorById = async(req, res) => {
         }
          const vendorFirmId = vendor.firm[0]._id;
         console.log('venderFirmId', vendorFirmId)
-        res.status(200).json({vendorFirmId})
+        res.status(200).json({vendorId, vendorFirmId, vendor})
     }catch(err){
         if(err) {
             console.log(err)

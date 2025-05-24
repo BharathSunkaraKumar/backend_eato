@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
         cb(null, 'uploads/');
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + path.extname(file.originalname));
+        cb(null, Date.now() + path.extname(file.originalname));
     }
 });
 
@@ -68,6 +68,7 @@ const deleteProductById = async(req, res) => {
         if(!deletedProduct) {
             return res.status(404).json({error:'no product found'});
         }
+        res.status(200).json({message: 'Product deleted successfully'})
     }catch(err){
         console.log(err);
         res.status(500).json({err: "Internal server error"})

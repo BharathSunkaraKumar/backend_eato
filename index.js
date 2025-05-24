@@ -15,6 +15,9 @@ const PORT = process.env.PORT || 3000;
 dotEnv.config();
 app.use(bodyParser.json());
 app.set('view engine', 'pug');
+
+//cors
+const allowedOrigins = ['https://eato-backend-dashboard.vercel.app'];
 app.use(cors())
 // app.use(express.json())
 

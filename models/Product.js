@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema({
         ]
     },
     image: {
-        tpe: String
+        type: String
     },
     bestSeller: {
         type: Boolean

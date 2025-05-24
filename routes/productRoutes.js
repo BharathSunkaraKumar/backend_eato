@@ -8,7 +8,7 @@ router.get('/:firmId/products', productController.getProductByFirm);
 router.get('/uploads/:imageName', (req, res) => {
     const imageName = req.params.imageName;
     res.headersSent('Content-Type', 'image/jpeg');
-    res.sendFile(Path2D.join(__dirname, '..', '/upload', imageName));
+    res.sendFile(Path.join(__dirname, '..', '/upload', imageName));
 });
 
 router.delete('/:productId', productController.deleteProductById);
