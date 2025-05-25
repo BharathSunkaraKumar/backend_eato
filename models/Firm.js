@@ -30,7 +30,7 @@ const FirmSchema = new mongoose.Schema({
         type: String
     },
     image: {
-        tpe: String
+        type: String
     },
     vendor: [
         {
